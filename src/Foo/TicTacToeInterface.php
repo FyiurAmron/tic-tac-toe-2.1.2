@@ -21,7 +21,7 @@ interface TicTacToeInterface
      * @throws FieldTakenException
      * @throws WrongPlayerException
      */
-    public function putX(int $x, int $y);
+    public function putX(int $x, int $y): void;
 
     /**
      * $x,$y - 0-2
@@ -32,7 +32,7 @@ interface TicTacToeInterface
      * @throws FieldTakenException
      * @throws WrongPlayerException
      */
-    public function putO(int $x, int $y);
+    public function putO(int $x, int $y): void;
 
     /**
      * @return bool
