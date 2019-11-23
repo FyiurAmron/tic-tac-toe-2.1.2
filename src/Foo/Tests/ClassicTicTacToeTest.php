@@ -1,30 +1,30 @@
 <?php
-
+/** @noinspection PhpUnhandledExceptionInspection */
 declare(strict_types=1);
 
 namespace Foo\Tests;
 
 use Foo\ClassicTicTacToe;
+use Foo\Exceptions\FieldTakenException;
+use Foo\Exceptions\WrongPlayerException;
 use Foo\Marker;
 use PHPUnit\Framework\TestCase;
 
 class ClassicTicTacToeTest extends TestCase
 {
-    /**
-     * @expectedException \Foo\Exceptions\FieldTakenException
-     */
     public function testSameField()
     {
+        $this->expectException(FieldTakenException::class);
+
         $c = new ClassicTicTacToe();
         $c->putX(1, 1);
         $c->putO(1, 1);
     }
 
-    /**
-     * @expectedException \Foo\Exceptions\WrongPlayerException
-     */
     public function testWrongPlayer()
     {
+        $this->expectException(WrongPlayerException::class);
+
         $c = new ClassicTicTacToe();
         $c->putX(1, 1);
         $c->putX(1, 2);
@@ -34,8 +34,9 @@ class ClassicTicTacToeTest extends TestCase
      * @dataProvider provider
      *
      * @param string $game
-     * @throws \Foo\Exceptions\FieldTakenException
-     * @throws \Foo\Exceptions\WrongPlayerException
+     *
+     * @throws FieldTakenException
+     * @throws WrongPlayerException
      */
     public function testGame(string $game)
     {
@@ -91,8 +92,9 @@ class ClassicTicTacToeTest extends TestCase
      * @param $sign
      * @param $move
      * @param $prevMove
-     * @throws \Foo\Exceptions\FieldTakenException
-     * @throws \Foo\Exceptions\WrongPlayerException
+     *
+     * @throws FieldTakenException
+     * @throws WrongPlayerException
      */
     private function play(ClassicTicTacToe $c, $sign, &$move, &$prevMove)
     {
@@ -121,7 +123,7 @@ class ClassicTicTacToeTest extends TestCase
     /**
      * @return \Generator
      */
-    public function provider()
+    public function provider(): ?\Generator
     {
         /*
          *  1 | 2 | 3
