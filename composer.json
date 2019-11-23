@@ -1,0 +1,25 @@
+{
+    "name": "polcode/recruitment-tictactoe",
+    "description": "Recruitment test to check a candidate skills",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Polcode HR",
+            "email": "polcode.hr@polcode.net"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
